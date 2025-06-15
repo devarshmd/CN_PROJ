@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Network Design Project</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Material 3 inspired theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header-bg {
+            background-color: #004080; /* Dark blue primary color */
+        }
+        .nav-link {
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem; /* More rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 1.5rem;
+            margin: 1.25rem auto; /* Center cards */
+            max-width: 800px; /* Max width for readability */
+            width: 100%; /* Ensure it takes full width up to max */
+        }
+        .section-title {
+            color: #004080;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        ul {
+            list-style: none; /* Remove default bullets */
+            padding: 0;
+        }
+        li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        strong {
+            color: #222;
+        }
+        .button-primary {
+            background-color: #004080;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-block; /* For proper padding and margin */
+        }
+        .button-primary:hover {
+            background-color: #003366;
+        }
+        .footer-bg {
+            background-color: #e0e0e0;
+        }
+        /* Style for assignment links within the list */
+        .assignment-list li a {
+            color: #004080;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease-in-out;
+        }
+        .assignment-list li a:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header/Navigation Bar -->
+    <header class="header-bg p-4 shadow-md">
+        <nav class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
+            <div class="text-white text-2xl font-bold mb-4 sm:mb-0">
+                Network Project
+            </div>
+            <div class="flex flex-wrap justify-center sm:justify-end space-x-2 sm:space-x-4">
+                <a href="#" class="nav-link" data-target="home-content">Home</a>
+                <a href="#" class="nav-link" data-target="overview-content">Overview</a>
+                <a href="#" class="nav-link" data-target="theory-content">Theory & Simulation</a>
+                <a href="#" class="nav-link" data-target="assignments-content">Assignments</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow flex flex-col items-center justify-center p-4">
+        <!-- Home Content -->
+        <section id="home-content" class="card text-center max-w-2xl w-full active-content">
+            <h1 class="text-5xl font-extrabold text-gray-800 mb-6">Enterprise Network Design Project</h1>
+            <p class="text-lg text-gray-600 mb-8">
+                <strong>Project By:</strong> Muhammad Basil, Aiswarya Santhosh, Anand Manoharan, Devarsh M D, Nived G Unni
+            </p>
+            <p class="text-md text-gray-500 mb-10">
+                <strong>Key Protocols:</strong> TCP, SHRSLS, RPHTPMLA, OSPF
+            </p>
+            <div class="space-x-4">
+                <button onclick="showContent('overview-content')" class="button-primary">Explore Project Overview</button>
+                <button onclick="showContent('theory-content')" class="button-primary">Understand Theory</button>
+            </div>
+        </section>
+
+        <!-- Overview Content -->
+        <section id="overview-content" class="card hidden">
+            <h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">Project Overview</h1>
+
+            <section class="mb-6">
+                <h2 class="section-title">Location A - Internal Network</h2>
+                <ul>
+                    <li><strong>Devices:</strong> PCs (PC0–PC9), Access Points, Smartphones, Laptops, Tablets</li>
+                    <li><strong>VLANs:</strong> VLAN 10 (172.16.1.0/24 - Wired), VLAN 20 (172.16.2.0/24 - Wireless)</li>
+                    <li><strong>Security:</strong> Host-Based Firewall on all PCs</li>
+                </ul>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="section-title">Core Network - Routed Backbone</h2>
+                <ul>
+                    <li><strong>Routers:</strong> Router0 to Router5</li>
+                    <li><strong>Subnets:</strong> 10.2.1.0/24, 10.16.1.0/24, 172.24.1.0/24, 192.168.150.0/24, 192.168.190.0/24, 192.168.200.0/24</li>
+                    <li><strong>Firewall:</strong> Network-Based Firewall between Router3 and Router4</li>
+                </ul>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="section-title">Location B - Corporate Network</h2>
+                <ul>
+                    <li><strong>Devices:</strong> PCs (PC10–PC18), MAN-SERVER, Server0, WLC, Lightweight AP</li>
+                    <li><strong>VLANs:</strong> VLAN 90 (172.18.90.0/24 - Wireless), VLAN 91 (172.18.51.0/24 - Wired)</li>
+                    <li><strong>Wireless:</strong> Controlled by Wireless LAN Controller</li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- Theory & Simulation Content -->
+        <section id="theory-content" class="card hidden">
+            <h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">Network Theory & Simulation</h1>
+
+            <section class="mb-6">
+                <h2 class="section-title">Core Networking Concepts</h2>
+                <p class="text-gray-700 mb-4">
+                    This project integrates several fundamental computer networking concepts to demonstrate a robust enterprise network design. Key areas include:
+                </p>
+                <ul class="list-disc pl-5 text-gray-700">
+                    <li><strong>TCP/IP Model:</strong> Understanding the layers and protocols governing data transmission.</li>
+                    <li><strong>Subnetting & VLANs:</strong> Efficient IP address allocation and network segmentation for security and performance.</li>
+                    <li><strong>Routing Protocols (OSPF):</strong> Dynamic path determination for inter-network communication, ensuring efficient data delivery across complex topologies.</li>
+                    <li><strong>Firewall Implementation:</strong> Both host-based and network-based firewalls for ingress/egress filtering and access control.</li>
+                    <li><strong>Wireless Networking:</strong> Deployment and management of Wireless LAN Controllers (WLC) and Lightweight Access Points (LAPs) for secure wireless access.</li>
+                    <li><strong>DHCP & DNS:</strong> Automatic IP address assignment and domain name resolution for seamless service access.</li>
+                </ul>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="section-title">Simulation Features</h2>
+                <p class="text-gray-700 mb-4">
+                    The simulated environment allows for comprehensive testing and validation of the network design:
+                </p>
+                <ul class="list-disc pl-5 text-gray-700">
+                    <li><strong>Ping, Web Access, DNS and DHCP Testing:</strong> Verifying basic connectivity and service functionality across different network segments.</li>
+                    <li><strong>Firewall Filtering and ACL Scenarios:</strong> Testing the effectiveness of security policies and access control lists in blocking/allowing traffic.</li>
+                    <li><strong>Inter-VLAN Routing and Wireless Client Behavior:</strong> Observing how devices communicate between different VLANs and how wireless clients obtain network access and roam within the wireless infrastructure.</li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- Assignments Content -->
+        <section id="assignments-content" class="card hidden">
+            <h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">Assignment Folders</h1>
+
+            <section class="mb-6">
+                <h2 class="section-title">Individual Assignments</h2>
+                <p class="text-gray-700 mb-4">
+                    Please click on a name below to access their respective assignment folder. (These links assume folders exist on the server.)
+                </p>
+                <ul class="assignment-list">
+                    <li><a href="Devarsh M D/">Devarsh M D</a></li>
+                    <li><a href="Muhammed Basil K/">Muhammed Basil K</a></li>
+                    <li><a href="Anand Mahadevan S M/">Anand Mahadevan S M</a></li>
+                    <li><a href="Aiswarya Santhosh/">Aiswarya Santhosh</a></li>
+                    <li><a href="Nived G Unni/">Nived G Unni</a></li>
+                </ul>
+            </section>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-bg p-4 text-center text-sm text-gray-600 shadow-inner mt-auto">
+        <p>&copy; 2025 Network Project | All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript to handle content switching
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const homeButtons = document.querySelectorAll('.button-primary'); // Get buttons on home page
+
+            // Function to show a specific content section and hide others
+            function showContent(targetId) {
+                const allContentSections = document.querySelectorAll('main section');
+                allContentSections.forEach(section => {
+                    section.classList.add('hidden'); // Hide all sections
+                });
+                document.getElementById(targetId).classList.remove('hidden'); // Show the target section
+            }
+
+            // Add click event listeners to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const targetId = this.getAttribute('data-target');
+                    if (targetId) {
+                        showContent(targetId);
+                        // Scroll to top of the content area for better UX
+                        document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Add click event listeners to buttons on the home page
+            homeButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    // showContent is already called by the onclick attribute
+                    // No need for event.preventDefault() here as the button itself isn't a link
+                    // Scroll to top of the content area for better UX
+                    document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            // Show 'home-content' by default when the page loads
+            showContent('home-content');
+        });
+    </script>
+</body>
+</html>

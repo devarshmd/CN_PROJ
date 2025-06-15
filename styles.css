@@ -1,0 +1,46 @@
+/* Custom styles to complement Tailwind */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0a0e1a; /* Dark blue-ish background */
+    color: #e0e0e0; /* Light gray text for contrast */
+}
+.nav-link {
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
+}
+.nav-link.active::after, .nav-link:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #0ea5e9; /* Sky blue accent */
+}
+.content-section {
+    display: none; /* Hide all sections by default */
+    animation: fadeIn 0.8s ease-in-out;
+}
+.content-section.active {
+    display: block; /* Show the active section */
+}
+.card {
+    background-color: #1e293b; /* Slate gray for cards */
+    border: 1px solid #334155;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.hero-bg {
+    background:
+        radial-gradient(ellipse 80% 80% at 50% -20%,rgba(14, 165, 233, 0.3), rgba(255,255,255,0)),
+        linear-gradient(180deg, #0a0e1a 0%, #111827 100%);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
